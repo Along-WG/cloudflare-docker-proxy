@@ -1,3 +1,15 @@
+import DOCS from './help.html'
+
+// return docs
+if (url.pathname === "/") {
+  return new Response(DOCS, {
+    status: 200,
+    headers: {
+      "content-type": "text/html"
+    }
+  });
+}
+
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
@@ -7,16 +19,16 @@ const dockerHub = "https://registry-1.docker.io";
 
 const routes = {
   // production
-  "docker.libcuda.so": dockerHub,
-  "quay.libcuda.so": "https://quay.io",
-  "gcr.libcuda.so": "https://gcr.io",
-  "k8s-gcr.libcuda.so": "https://k8s.gcr.io",
-  "k8s.libcuda.so": "https://registry.k8s.io",
-  "ghcr.libcuda.so": "https://ghcr.io",
-  "cloudsmith.libcuda.so": "https://docker.cloudsmith.io",
+  "docker.lihuo.org": dockerHub,
+  "quay.lihuo.org": "https://quay.io",
+  "gcr.lihuo.org": "https://gcr.io",
+  "k8s-gcr.lihuo.org": "https://k8s.gcr.io",
+  "k8s.lihuo.org": "https://registry.k8s.io",
+  "ghcr.lihuo.org": "https://ghcr.io",
+  "cloudsmith.lihuo.org": "https://docker.cloudsmith.io",
 
   // staging
-  "docker-staging.libcuda.so": dockerHub,
+  "docker-staging.lihuo.org": dockerHub,
 };
 
 function routeByHosts(host) {
